@@ -1,0 +1,18 @@
+{
+  "company_info": {
+    "director_name": "Роналду К. Д.",
+    "company_name": "УМТО"
+  },
+  "departments": {
+    "ит": {
+      "full_name": "Департамент информационных технологий",
+      "mentor": "Павел Дуров (Техлид, @durov)",
+      "ethics_officer": "Иван Царевич (@zadrot)"
+    },
+    "маркетинг": {
+      "full_name": "Отдел маркетинга и связей с общественностью",
+      "mentor": "Майкл Оливер (Креативный директор, @whackdoor)",
+      "ethics_officer": "Иван Царевич (@zadrot)"
+    }
+  }
+}
