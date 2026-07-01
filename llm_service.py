@@ -53,4 +53,10 @@ async def generate_welcome_book(fio: str, position: str, company_data: dict) -> 
         )
         return response.text
     except Exception as e:
-        return f"❌ Ошибка при генерации через новый Google GenAI API: {str(e)}"
+        # Печатаем полную ошибку только в консоль сервера (скрыто от пользователя)
+        print("\n" + "="*50)
+        print(f"🔴 ОШИБКА GEMINI API: {e}")
+        print("="*50 + "\n")
+        
+        # Пользователю в Telegram отдаем только безопасную заглушку
+        return "❌ Произошла ошибка при генерации Книги приветствия. Пожалуйста, попробуйте позже."
