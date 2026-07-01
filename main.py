@@ -19,19 +19,19 @@ class OnboardingForm(StatesGroup):
 
 @dp.message(CommandStart())
 async def cmd_start(message: types.Message, state: FSMContext):
-    await message.answer("👋 Добро пожаловать в УМТО! Давай создадим твою персональную Книгу приветствия.\n\nВведите ваши **ФИО**:")
+    await message.answer("👋 Добро пожаловать в УМТО! Введите ваш **ФИО**:")
     await state.set_state(OnboardingForm.waiting_for_fio)
 
 @dp.message(OnboardingForm.waiting_for_fio)
 async def process_fio(message: types.Message, state: FSMContext):
     await state.update_data(fio=message.text)
-    await message.answer("Отлично! Теперь укажите вашу **Должность**:")
+    await message.answer("Укажите вашу **Должность**:")
     await state.set_state(OnboardingForm.waiting_for_position)
 
 @dp.message(OnboardingForm.waiting_for_position)
 async def process_position(message: types.Message, state: FSMContext):
     await state.update_data(position=message.text)
-    await message.answer("И последнее: укажите ваш **Отдел** (например: ИТ или Маркетинг):")
+    await message.answer("Укажите ваш **Отдел** (например: ИТ или Маркетинг):")
     await state.set_state(OnboardingForm.waiting_for_department)
 
 @dp.message(OnboardingForm.waiting_for_department)
@@ -47,7 +47,7 @@ async def process_department(message: types.Message, state: FSMContext):
         return
 
     # Отправляем статус "печатает", так как ИИ отвечает не мгновенно
-    await message.answer("⏳ Собираем данные и генерируем твою Книгу приветствия, подожди пару секунд...")
+    await message.answer("⏳ Собираем данные, подождите пару секунд...")
     await bot.send_chat_action(chat_id=message.chat.id, action="typing")
 
     # 2. Генерируем пакет через LLM-сервис
